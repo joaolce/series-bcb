@@ -1,0 +1,25 @@
+API rest para recuperar os valores de uma série temporal pública
+
+Para utilizar deve ser executado da seguinte forma:
+
+<<app-home>>/método/parâmetro/resposta
+
+Existem dois métodos disponíveis
+
+* ultimoValor
+  recupera o último valor disponível da série
+
+  parâmetro: numeroSerie
+    numeroSerie: inteiro
+
+* valores
+  recupera os valores de uma série para um determinado período de tempo
+
+  parâmetro: numeroSerie|dataInicio|dataFim
+    numeroSerie: inteiro
+    dataInicio: data (ddMMaaaa)
+    dataFim: data (ddMMaaaa)
+
+Existem dois tipos de resposta implementados
+  JSON (padrão)
+  XML
