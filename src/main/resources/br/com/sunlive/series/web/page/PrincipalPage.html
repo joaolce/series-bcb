@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Séries BCB</title>
+</head>
+<body>
+	<h1>Séries BCB</h1>
+	<h3>URL básica</h3>
+	<p>
+		<code><span wicket:id="server">#server</span>&lt;metodo&gt;/&lt;parametro&gt;/&lt;resposta&gt;</code>
+	</p>
+	<div>
+		<label>Métodos</label>
+		<ul>
+			<li>ultimoValor
+				<ul>
+					<li>parâmetro -&gt; formato: numeroSerie
+						<ul>
+							<li>numeroSerie: inteiro</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>valores
+				<ul>
+					<li>parâmetro -&gt; formato: numeroSerie|dataInicio|dataFim
+						<ul>
+							<li>numeroSerie: inteiro</li>
+							<li>dataInicio: data (ddMMaaaa)</li>
+							<li>dataFim: data (ddMMaaaa)</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div>
+		<label>Respostas</label>
+		<ul>
+			<li>json -&gt; padrão</li>
+			<li>xml</li>
+		</ul>
+	</div>
+</body>
+</html>
