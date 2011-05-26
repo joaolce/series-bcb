@@ -1,25 +1,35 @@
-API rest para recuperar os valores de uma série temporal pública
+API rest para recuperar os valores de uma s√©rie temporal p√∫blica
+Estes dados tem como base o webservice do banco central do brasil (www.bcb.gov.br)
 
 Para utilizar deve ser executado da seguinte forma:
 
-<<app-home>>/método/parâmetro/resposta
+<<app-home>>/m√©todo/par√¢metro/resposta
 
-Existem dois métodos disponíveis
+M√©todos dispon√≠veis:
 
 * ultimoValor
-  recupera o último valor disponível da série
+  recupera o √∫ltimo valor dispon√≠vel da s√©rie
 
-  parâmetro: numeroSerie
+  par√¢metro: numeroSerie
     numeroSerie: inteiro
 
 * valores
-  recupera os valores de uma série para um determinado período de tempo
+  recupera os valores de uma s√©rie para um determinado per√≠odo de tempo
 
-  parâmetro: numeroSerie|dataInicio|dataFim
+  par√¢metro: numeroSerie|dataInicio|dataFim
     numeroSerie: inteiro
     dataInicio: data (ddMMaaaa)
     dataFim: data (ddMMaaaa)
 
-Existem dois tipos de resposta implementados
-  JSON (padrão)
+Tipos de resposta implementados
+  JSON (padr√£o, caso n√£o seja informado)
   XML
+
+Para rodar em ambiente local √© necess√°rio:
+* JDK 1.6
+* Apache Maven 2.2.1 ou superior
+
+Ap√≥s baixar o projeto √© necess√°rio executar o comando 'mvn install'
+e executar o arquivo server-start.sh (em unix)
+
+e url para acesso √© http://localhost:8080/series
