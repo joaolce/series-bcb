@@ -4,7 +4,7 @@ import org.apache.wicket.PageParameters;
 
 public enum ParametroREST {
 
-  PARAMETRO("parametro"), RESPOSTA("resposta"), ;
+  PARAMETRO("parametro"), RESPOSTA("resposta");
 
   private String nome;
 
