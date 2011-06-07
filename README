@@ -1,5 +1,5 @@
 API rest para recuperar os valores de uma série temporal pública
-Estes dados tem como base o webservice do banco central do brasil (www.bcb.gov.br)
+Estes dados tem como base o sistema SGS do Banco Central do Brasil - http://www.bcb.gov.br
 
 Para utilizar deve ser executado da seguinte forma:
 
