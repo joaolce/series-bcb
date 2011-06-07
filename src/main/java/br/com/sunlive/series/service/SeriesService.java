@@ -27,6 +27,7 @@ public class SeriesService {
   }
 
   public WSSerieVO ultimoValor(long idSerie) {
+    LOGGER.info("ultimoValor -> " + idSerie);
     try {
       return getFachada().getUltimoValorVO(idSerie);
     } catch (Exception e) {
@@ -35,6 +36,7 @@ public class SeriesService {
   }
 
   public WSSerieVO valores(long idSerie, String dataInicio, String dataFim) {
+    LOGGER.info("valores -> " + idSerie + " & " + dataInicio + " & " + dataFim);
     try {
       return getFachada().getValoresSeriesVO(new long[] {idSerie}, dataInicio, dataFim)[0];
     } catch (Exception e) {
