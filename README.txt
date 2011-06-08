@@ -29,7 +29,10 @@ Para rodar em ambiente local é necessário:
 * JDK 1.6
 * Apache Maven 2.2.1 ou superior
 
-Após baixar o projeto é necessário executar o comando 'mvn install'
-e executar o arquivo server-start.sh (em unix)
+* executar o comando 'mvn install'
+* executar o arquivo server-start.sh
 
-e url para acesso é http://localhost:8080/series
+url para acesso: http://localhost:8080/series
+
+
+Obs: para rodar local deverá ser importado na JVM os certificados (webservice do bacen é https)
