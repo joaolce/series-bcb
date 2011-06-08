@@ -6,7 +6,7 @@ public enum TipoErro {
 
   PARAMETRO_NAO_INFORMADO(1, "O parâmetro não foi informado"),
   PARAMETRO_INCORRETO(2, "%complemento%"),
-  RESPOSTA_NAO_IMPLEMENTADA(3, "A resposta não está implementada"),
+  RESPOSTA_NAO_IMPLEMENTADA(3, "A resposta '%complemento%' não está implementada"),
   INTERNO(4, "%complemento%");
 
   private int codigo;

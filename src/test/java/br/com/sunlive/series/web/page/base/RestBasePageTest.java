@@ -5,6 +5,7 @@ import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.verify;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+import static org.junit.Assume.assumeThat;
 import br.com.sunlive.series.erro.Erro;
 import br.com.sunlive.series.erro.SeriesException;
 import br.com.sunlive.series.erro.TipoErro;
@@ -12,18 +13,19 @@ import br.com.sunlive.series.web.ParametroREST;
 import br.com.sunlive.series.web.response.Resposta;
 import java.io.Serializable;
 import org.apache.wicket.PageParameters;
+import org.apache.wicket.RequestCycle;
+import org.hamcrest.core.IsInstanceOf;
 import org.junit.Before;
 import org.junit.Test;
 import util.SeriesWicketTester;
 
 public class RestBasePageTest implements Serializable {
 
-  private SeriesWicketTester tester;
   private RestBasePage page;
 
   @Before
   public void setUp() {
-    tester = new SeriesWicketTester();
+    new SeriesWicketTester();
   }
 
   @Test
@@ -70,11 +72,29 @@ public class RestBasePageTest implements Serializable {
       }
 
       @Override
-      protected void responder(Object resposta, Resposta tipoResposta) {
+      protected void responder(Object resposta) {
         //stub
       }
     };
     page.onRender(null);
+  }
+
+  @Test
+  public void testResponder() {
+    final Resposta resposta = Resposta.padrao();
+    page = new RestBasePage(new PageParameters()) {
+      @Override
+      protected Object executar(String parametro) {
+        return null;
+      }
+
+      @Override
+      protected Resposta obterTipoResposta() {
+        return resposta;
+      }
+    };
+    page.responder(new Object());
+    assumeThat(RequestCycle.get().getRequestTarget(), IsInstanceOf.instanceOf(resposta.implementacao()));
   }
 
   @Test
@@ -85,7 +105,7 @@ public class RestBasePageTest implements Serializable {
         return null;
       }
     };
-    assertEquals(Resposta.JSON, page.obterTipoResposta());
+    assertEquals(Resposta.padrao(), page.obterTipoResposta());
   }
 
   @Test

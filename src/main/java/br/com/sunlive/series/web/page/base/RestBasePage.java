@@ -22,7 +22,7 @@ public abstract class RestBasePage extends WebPage {
   protected void onRender(MarkupStream markupStream) {
     try {
       Object resposta = executar(obterParametro());
-      responder(resposta, obterTipoResposta());
+      responder(resposta);
     } catch (SeriesException execao) {
       throw execao;
     } catch (RuntimeException execao) {
@@ -36,20 +36,18 @@ public abstract class RestBasePage extends WebPage {
 
   protected abstract Object executar(String parametro);
 
+  protected void responder(Object resposta) {
+    Resposta tipoResposta = obterTipoResposta();
+    getRequestCycle().setRequestTarget(
+        new Mirror().on(tipoResposta.implementacao()).invoke().constructor().withArgs(resposta));
+  }
+
   protected Resposta obterTipoResposta() {
     String parametroResposta = ParametroREST.RESPOSTA.get(getPageParameters());
     if (StringUtils.isBlank(parametroResposta)) {
-      return Resposta.JSON;
+      return Resposta.padrao();
     }
     return Resposta.get(parametroResposta);
-  }
-
-  protected void responder(Object resposta, Resposta tipoResposta) {
-    if (tipoResposta == null) {
-      lancarErro(TipoErro.RESPOSTA_NAO_IMPLEMENTADA, null);
-    }
-    getRequestCycle().setRequestTarget(
-        new Mirror().on(tipoResposta.implementacao()).invoke().constructor().withArgs(resposta));
   }
 
   protected void lancarErro(TipoErro tipo, String complemento) {
